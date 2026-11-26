@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #efece5;
+  --grid: #e3dfd5;
+  --panel: #ffffff;
+  --panel-2: #faf8f3;
+  --ink: #1b1a17;
+  --ink-soft: #6f6b62;
+  --ink-faint: #8f897e;
+  --line: #e6e1d6;
+  --line-strong: #d8d2c5;
+  --gutter: #bdb7aa;
+  --accent: oklch(0.58 0.14 285);
+  --accent-ink: #ffffff;
+  --t-keyword: oklch(0.55 0.15 300);
+  --t-id: oklch(0.55 0.13 248);
+  --t-num: oklch(0.52 0.12 168);
+  --t-op: oklch(0.58 0.14 52);
+  --t-punc: oklch(0.55 0.02 80);
+  --t-eof: oklch(0.6 0.02 80);
+  --err-bg: oklch(0.96 0.03 25);
+  --err-line: oklch(0.82 0.09 25);
+  --err-ink: oklch(0.5 0.17 25);
+}
+[data-theme="dark"] {
+  --bg: #131217;
+  --grid: #1c1b22;
+  --panel: #1b1a21;
+  --panel-2: #211f28;
+  --ink: #ece8e0;
+  --ink-soft: #9b968c;
+  --ink-faint: #7d7986;
+  --line: #2c2a34;
+  --line-strong: #383545;
+  --gutter: #54505d;
+  --accent: oklch(0.68 0.15 285);
+  --accent-ink: #16151a;
+  --t-keyword: oklch(0.74 0.15 300);
+  --t-id: oklch(0.74 0.13 248);
+  --t-num: oklch(0.74 0.13 168);
+  --t-op: oklch(0.76 0.14 58);
+  --t-punc: oklch(0.7 0.02 80);
+  --t-eof: oklch(0.6 0.02 80);
+  --err-bg: oklch(0.28 0.06 25);
+  --err-line: oklch(0.45 0.12 25);
+  --err-ink: oklch(0.82 0.13 25);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel-2);
+  --color-ink: var(--ink);
+  --color-soft: var(--ink-soft);
+  --color-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-strong: var(--line-strong);
+  --color-gutter: var(--gutter);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-err-bg: var(--err-bg);
+  --color-err-line: var(--err-line);
+  --color-err: var(--err-ink);
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 26px 26px;
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.row-in {
+  animation: rowIn 0.2s ease backwards;
+}
+.pop-in {
+  animation: popIn 0.18s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .row-in,
+  .pop-in {
+    animation: none;
+  }
+}
